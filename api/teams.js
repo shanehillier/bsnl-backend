@@ -7,7 +7,7 @@ const supabase = createClient(
 
 export default async function handler(req, res) {
 
-  const { data, error } = await client
+  const { data, error } = await supabase
   .from('teams').select('*');
 
   if (error) return res.status(500).json({ error: error.message });
