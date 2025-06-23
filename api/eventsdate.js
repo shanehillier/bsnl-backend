@@ -27,5 +27,13 @@ export default async function handler(req, res) {
 
   if (error) return res.status(500).json({ error: error.message });
 
+   const sortedData = data.sort((a, b) => {
+    const aIsGame = !!a.game;
+    const bIsGame = !!b.game;
+
+    if (aIsGame === bIsGame) return 0;
+    return aIsGame ? 1 : -1; // non-game first
+  });
+
   res.status(200).json(data);
 }
