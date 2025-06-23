@@ -16,8 +16,8 @@ export default async function handler(req, res) {
 
   const id = req.query;
 
-  if (!start || !end) {
-    return res.status(400).json({ error: 'Missing start or end date' });
+  if (!id) {
+    return res.status(400).json({ error: 'Missing id' });
   }
 
   const { data, error } = await supabase
